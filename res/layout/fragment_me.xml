@@ -1,0 +1,235 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+        xmlns:my="http://schemas.android.com/apk/res-auto"
+    android:paddingRight="8dp"
+    tools:context="com.mycj.jusd.fragment.MeFragment">
+
+    <ImageView
+        android:padding="2dp"
+        android:contentDescription="@string/app_name"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_me_top"
+        android:layout_height="240dp" />
+
+
+    <com.mycj.jusd.view.DampingScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/rl_history_sleep"
+        android:clickable="true"
+        android:background="@drawable/selector_bg_item"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/me_item_height">
+
+    <com.mycj.jusd.view.FangTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:text="睡眠历史"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        my:fang_typeface="JIAN" />
+        
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_turn_to"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+           />
+
+
+
+
+    </RelativeLayout> 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_main_tab"
+            />
+        
+        <RelativeLayout
+            android:id="@+id/rl_history_sport"
+            android:clickable="true"
+            android:background="@drawable/selector_bg_item"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/me_item_height">
+    <com.mycj.jusd.view.FangTextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:text="运动历史"
+                     my:fang_typeface="JIAN"
+        android:textSize="14sp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        />
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_turn_to"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_main_tab"
+            />
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/me_item_height">
+    <com.mycj.jusd.view.FangTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="累计里程"
+                     my:fang_typeface="JIAN"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        />
+
+        <com.mycj.jusd.view.FangTextView
+            android:id="@+id/tv_history_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30公里"
+                         my:fang_typeface="JIAN"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+ <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_main_tab"
+            />
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/me_item_height">
+    <com.mycj.jusd.view.FangTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:text="累计时间"
+                     my:fang_typeface="JIAN"
+        android:textSize="14sp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        />
+
+        <com.mycj.jusd.view.FangTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_history_time"
+            android:text="20小时30分钟"
+                         my:fang_typeface="JIAN"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+ <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_main_tab"
+            />
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/me_item_height">
+    <com.mycj.jusd.view.FangTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="累计步数"
+                     my:fang_typeface="JIAN"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        />
+
+        <com.mycj.jusd.view.FangTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_history_step"
+            android:text="2000步"
+                         my:fang_typeface="JIAN"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+ <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_main_tab"
+            />
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/me_item_height">
+    <com.mycj.jusd.view.FangTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="能力消耗"
+                     my:fang_typeface="JIAN"
+        android:textSize="14sp"
+        android:textColor="@android:color/white"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        />
+
+        <com.mycj.jusd.view.FangTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100千卡"
+                         my:fang_typeface="JIAN"
+            android:id="@+id/tv_history_cal"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_main_tab"
+            />
+
+    </LinearLayout>
+    </com.mycj.jusd.view.DampingScrollView>
+
+</LinearLayout>

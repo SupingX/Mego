@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Junsd</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="tab_home">主页</string>
+    <string name="tab_me">我</string>
+    <string name="tab_setting">设置</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_device_acitivy">DeviceAcitivy</string>
+    <string name="title_activity_personal_setting">PersonalSettingActivity</string>
+
+    <!-- dialog -->
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="cancel">返回</string>
+    <string name="confirm">确定</string>
+    <string name="title_activity_sync_data">SyncDataActivity</string>
+    <string name="title_activity_setting_remind">SettingRemindActivity</string>
+    <string name="title_activity_history_sleep">HistorySleepActivity</string>
+    <string name="title_activity_history_sport">HistorySportActivity</string>
+    <string name="up">&lt;</string>
+    <string name="down">></string>
+    <string name="title_activity_count">CountActivity</string>
+    <string name="title_activity_sport_info">SportInfoActivity</string>
+    <string name="title_activity_spalish">SpalishActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="connected">Connected</string>
+    <string name="connect_fail">Fail</string>
+    <string name="nuknow">Unknow</string>
+    <string name="my_device">Device</string>
+    <string name="watch_setting">Watch Setting</string>
+    <string name="sync_data">Sync Data</string>
+    <string name="sport_plan">Sport Plan</string>
+    <string name="person_remind">Person Remind</string>
+    <string name="about">About</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_setting_sport_plan">SettingSportPlanActivity</string>
+    <string name="title_activity_off_line">OffLineActivity</string>
+
+</resources>
