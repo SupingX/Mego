@@ -30,9 +30,14 @@
             <mapping class="com.test.model.Reader"></mapping>
             <mapping class="com.test.model.Magazine"></mapping>
         </list>
+        
+          <mapping class="com.mycj.jusd.bean.news.SportInfoHistory"></mapping>
+           <mapping class="com.mycj.jusd.bean.news.SportLocationHistory"></mapping>
     -->
     <list>
-           <mapping class="com.mycj.jusd.bean.HistorySleep"></mapping>
-           <mapping class="com.mycj.jusd.bean.HistorySport"></mapping>
+         
+                    <mapping class="com.mycj.jusd.bean.news.SleepHistory"></mapping>
+                 
+                    <mapping class="com.mycj.jusd.bean.news.SportHistory"></mapping>
     </list>
 </litepal>

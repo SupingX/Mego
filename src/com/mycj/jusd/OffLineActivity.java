@@ -9,14 +9,11 @@ import com.baidu.mapapi.map.offline.MKOfflineMap;
 import com.baidu.mapapi.map.offline.MKOfflineMapListener;
 import com.laput.map.offline.OfflineMapCityBean;
 import com.laput.map.offline.OfflineMapCityBean.Flag;
-import com.mycj.jusd.adapter.HistroySleepAdapter.ViewHolder;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;

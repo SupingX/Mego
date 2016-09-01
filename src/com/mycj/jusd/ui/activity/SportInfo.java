@@ -1,6 +1,14 @@
 package com.mycj.jusd.ui.activity;
 
-public class SportInfo {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+/**
+ * 当前的运动信息
+ * 可能为计步or轨迹
+ *
+ */
+public class SportInfo implements Parcelable{
 	private int type;
 	private int step;
 	private int distance;
@@ -54,11 +62,40 @@ public class SportInfo {
 	}
 	public SportInfo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
-		return "SportInfo [type=" + type + ", step=" + step + ", distance=" + distance + ", time=" + time + ", calorie=" + calorie + ", hrAvg=" + hrAvg + "]";
+		return "当前运动信息计步or轨迹SportInfo [type=" + type + ", step=" + step + ", distance=" + distance + ", time=" + time + ", calorie=" + calorie + ", hrAvg=" + hrAvg + "]";
 	}
-	
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(this.type);
+		dest.writeInt(this.step);
+		dest.writeInt(this.distance);
+		dest.writeInt(this.time);
+		dest.writeInt(this.calorie);
+		dest.writeInt(this.hrAvg);
+	}
+public static final Parcelable.Creator<SportInfo> CREATOR = new Creator<SportInfo>() {
+		
+		@Override
+		public SportInfo[] newArray(int size) {
+			return new SportInfo[size];
+		}
+		
+		@Override
+		public SportInfo createFromParcel(Parcel source) {
+			int type = source.readInt();
+			int step = source.readInt();
+			int distance = source.readInt();
+			int time = source.readInt();
+			int calorie = source.readInt();
+			int hrAvg = source.readInt();
+			return new SportInfo(type, step, distance, time, calorie, hrAvg);
+		}
+	};
 }

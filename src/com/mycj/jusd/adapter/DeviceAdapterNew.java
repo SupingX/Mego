@@ -7,18 +7,15 @@ import java.util.List;
 import com.mycj.jusd.R;
 
 import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.sax.StartElementListener;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
-import android.view.animation.OvershootInterpolator;
 import android.view.animation.RotateAnimation;
-import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,9 +30,14 @@ public class DeviceAdapterNew extends BaseAdapter{
     private boolean isConnecting = false;
     private List<BluetoothDevice> devices = new ArrayList<BluetoothDevice>();
 	private RotateAnimation animation;
+	private int or = 0;
+	private int bl = 0;
     public DeviceAdapterNew(Context context,List<BluetoothDevice> devices){
         this.context = context;
         this.devices = devices;
+        Resources resources = context.getResources();
+        or = resources.getColor(R.color.bg_main_tab);
+        bl = Color.WHITE;
     }
     @Override
     public int getCount() {
@@ -44,7 +46,7 @@ public class DeviceAdapterNew extends BaseAdapter{
 
     @Override
     public Object getItem(int i) {
-        return 0;
+        return devices.get(i);
     }
 
     @Override
@@ -71,25 +73,30 @@ public class DeviceAdapterNew extends BaseAdapter{
         String name = device.getName();;
         String address = device.getAddress();
         if (device.getName()==null||device.getName().equals("")) {
-			name="未知";
+			name=viewGroup.getContext().getString(R.string.nuknow);
 		}
         holder.tvName.setText(name + " " +address.substring(address.length()-5, address.length()));
         
         if (i==connectingPos) {
+        	
 			if (isConnecting) {
 				holder.tvConnectingInfo.setVisibility(View.INVISIBLE);
 			    holder.imgConnecting.setVisibility(View.VISIBLE);
 			    startAnimation(holder.imgConnecting);
+			
 			}else{
 				holder.imgConnecting.setVisibility(View.INVISIBLE);
 				stopAnimation(holder.imgConnecting);
 				holder.tvConnectingInfo.setVisibility(View.VISIBLE);
 				holder.tvConnectingInfo.setText("已连接");
+				holder.tvConnectingInfo.setTextColor(or);
+			    isEnabled(connectingPos);
 			}
 		}else{
 			holder.tvConnectingInfo.setVisibility(View.VISIBLE);
 			holder.imgConnecting.setVisibility(View.INVISIBLE);
 			holder.tvConnectingInfo.setText("未连接");
+			holder.tvConnectingInfo.setTextColor(bl);
 			stopAnimation(holder.imgConnecting);
 		}
         

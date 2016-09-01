@@ -4,37 +4,24 @@ package com.mycj.jusd.base;
 
 
 
-import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 public class BaseFragment extends Fragment{
+	protected boolean isDebug = false;
+	protected void e(String tag,String msg){
+		if (isDebug) {
+			Log.e(tag, msg);
+		}
+	}
+	protected void i(String tag,String msg){
+		if (isDebug) {
+			Log.e(tag, msg);
+		}
+	}
 	
-//	 /**
-//		 * 字体:简体方正
-//		 * @return
-//		 */
-//		public Typeface getTypefaceForJianti(){
-//			 BaseApp app = (BaseApp)(getActivity().getApplication());
-//			return app.getTypefaceForJianti();
-//		}
-//		/**
-//		 * 字体:繁体方正
-//		 * @return
-//		 */
-//		public Typeface getTypefaceForFanti(){
-//			 BaseApp app = (BaseApp)(getActivity().getApplication());
-//			return app.getTypefaceForFanti();
-//		}
-//		/**
-//		 * 字体:数字字母 方正
-//		 * @return
-//		 */
-//		public Typeface getTypefaceForNumber(){
-//			 BaseApp app = (BaseApp)(getActivity().getApplication());
-//			return app.getTypefaceForNumber();
-//		}
 	public boolean isConnected(){
         BaseApp app  = (BaseApp) getActivity().getApplication();
-        return app.getXBlueService()!=null && app.getXBlueService().isAllConnected();
+        return app.getXBlueService()!=null && app.getXBlueService().isAllConnect();
 }
 }

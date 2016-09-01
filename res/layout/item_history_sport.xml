@@ -6,12 +6,11 @@
             android:gravity="center"
             android:orientation="vertical" >
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
-                android:orientation="horizontal"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp" >
 
@@ -20,21 +19,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                       android:layout_gravity="center_vertical"
+                                      android:layout_centerVertical="true"
                     android:text="08月06日"
                     android:textColor="@android:color/white"
                     android:textSize="12sp"
                     my:fang_typeface="JIAN" />
 
                 <ImageView
+                    android:layout_marginRight="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
                     android:src="@drawable/ic_sport_steps"
-                    android:gravity="center"
                     />
-            </LinearLayout>
+                
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -45,7 +46,7 @@
                 android:paddingRight="8dp" >
 
                 <com.mycj.jusd.view.FangTextView
-                          android:id="@+id/tv_sport_steps"
+                          android:id="@+id/tv_path_step"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -59,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:layout_toRightOf="@id/tv_sport_steps"
+                    android:layout_toRightOf="@id/tv_path_step"
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:text="步"

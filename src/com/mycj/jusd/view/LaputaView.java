@@ -55,11 +55,14 @@ public class LaputaView extends View{
 		es[5] = new ComposePathEffect(es[3], es[1]);
 		
 		
-		for (int i = 0; i < es.length; i++) {
+	/*	for (int i = 0; i < es.length; i++) {
 			p.setPathEffect(es[i]);
 			canvas.drawPath(mPath, p);
 			canvas.translate(0, 200);
-		}
+		}*/
+		
+		p.setPathEffect(es[1]);
+		canvas.drawPath(mPath, p);
 	}
 
 }

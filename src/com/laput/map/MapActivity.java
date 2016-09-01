@@ -15,31 +15,17 @@ import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.map.Marker;
-import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.Polyline;
 import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
-import com.baidu.mapapi.map.offline.MKOLSearchRecord;
-import com.baidu.mapapi.map.offline.MKOLUpdateElement;
 import com.baidu.mapapi.map.offline.MKOfflineMap;
-import com.baidu.mapapi.map.offline.MKOfflineMapListener;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
-import com.baidu.mapapi.model.inner.GeoPoint;
-import com.baidu.mapapi.search.route.WalkingRouteLine;
-import com.baidu.mapapi.search.route.WalkingRoutePlanOption;
-import com.baidu.mapapi.search.route.WalkingRouteResult;
 import com.baidu.mapapi.utils.CoordinateConverter;
 import com.baidu.mapapi.utils.CoordinateConverter.CoordType;
-import com.baidu.mapapi.utils.DistanceUtil;
-import com.laput.map.offline.OfflineMapCityBean;
-import com.laput.map.offline.OfflineMapCityBean.Flag;
 import com.mycj.jusd.OffLineActivity;
 import com.mycj.jusd.R;
-import com.mycj.jusd.R.id;
-import com.mycj.jusd.R.layout;
 import com.mycj.jusd.base.BaseActivity;
 import com.mycj.jusd.ui.fragment.MapDataFragment;
 import com.mycj.jusd.ui.fragment.MapHeartRateFragment;
@@ -47,19 +33,12 @@ import com.mycj.jusd.ui.fragment.MapPaceFragment;
 import com.mycj.jusd.ui.fragment.MapSignFragment;
 import com.mycj.jusd.ui.fragment.MapStepFreqFragment;
 import com.mycj.jusd.view.FangRadioButton;
-import com.mycj.jusd.view.FangTextView;
-import com.mycj.jusd.view.PaceCountView;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -67,8 +46,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -80,7 +57,6 @@ public class MapActivity extends BaseActivity implements OnCheckedChangeListener
 	private BaiduMap map;
 	private List<LatLng> points = new ArrayList<LatLng>();
 	private Polyline myPath;
-	
 	private FangRadioButton tvData;
 	private FangRadioButton tvSpeed;
 	private FangRadioButton tvPerStep;
@@ -202,7 +178,7 @@ public class MapActivity extends BaseActivity implements OnCheckedChangeListener
 
 		case R.id.tv_t_data:
 			if (dataFragment == null) {
-				dataFragment = new MapDataFragment();
+				dataFragment = new MapDataFragment(null);
 			}
 			if (dataFragment.isAdded()) {
 				transaction.show(dataFragment);
@@ -212,7 +188,7 @@ public class MapActivity extends BaseActivity implements OnCheckedChangeListener
 			break;
 		case R.id.tv_t_speed:
 			if (paceFragment == null) {
-				paceFragment = new MapPaceFragment();
+				paceFragment = new MapPaceFragment(null);
 			}
 			if (paceFragment.isAdded()) {
 				transaction.show(paceFragment);
@@ -222,7 +198,7 @@ public class MapActivity extends BaseActivity implements OnCheckedChangeListener
 			break;
 		case R.id.tv_t_per_step:
 			if (stepFreqFragment == null) {
-				stepFreqFragment = new MapStepFreqFragment();
+				stepFreqFragment = new MapStepFreqFragment(null);
 			}
 			if (stepFreqFragment.isAdded()) {
 				transaction.show(stepFreqFragment);
@@ -232,7 +208,7 @@ public class MapActivity extends BaseActivity implements OnCheckedChangeListener
 			break;
 		case R.id.tv_t_hr:
 			if (heartRateFragment == null) {
-				heartRateFragment = new MapHeartRateFragment();
+				heartRateFragment = new MapHeartRateFragment(null);
 
 			}
 			if (heartRateFragment.isAdded()) {
@@ -243,7 +219,7 @@ public class MapActivity extends BaseActivity implements OnCheckedChangeListener
 			break;
 		case R.id.tv_t_up:
 			if (signFragment == null) {
-				signFragment = new MapSignFragment();
+				signFragment = new MapSignFragment(null);
 			}
 			if (signFragment.isAdded()) {
 				transaction.show(signFragment);
@@ -299,7 +275,7 @@ public class MapActivity extends BaseActivity implements OnCheckedChangeListener
 		mapView = (MapView) findViewById(R.id.bmapView);
 		map = mapView.getMap();
 		LocationMode locationMode = LocationMode.NORMAL;
-		BitmapDescriptor marker = BitmapDescriptorFactory.fromResource(R.drawable.ic_pos);
+//		BitmapDescriptor marker = BitmapDescriptorFactory.fromResource(R.drawable.ic_pos);
 		map.setMyLocationConfigeration(new MyLocationConfiguration(locationMode, false, null));
 		MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(19.0f);
 		map.animateMapStatus(msu);
@@ -412,8 +388,8 @@ public class MapActivity extends BaseActivity implements OnCheckedChangeListener
 	protected void setLocation(final BDLocation location) {
 		CoordinateConverter converter  = new CoordinateConverter();
 		converter.from(CoordType.GPS);
-		CoordinateConverter coord = converter.coord(new LatLng(location.getLatitude(), location.getLongitude()));
-		LatLng convert = coord.convert();
+//		CoordinateConverter coord = converter.coord(new LatLng(location.getLatitude(), location.getLongitude()));
+//		LatLng convert = coord.convert();
 //		double latitude = convert.latitude;
 //		double longitude = convert.longitude;
 		double latitude = location.getLatitude();

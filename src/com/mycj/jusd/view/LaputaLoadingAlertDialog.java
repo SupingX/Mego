@@ -174,6 +174,8 @@ public class LaputaLoadingAlertDialog {
 	}
 
 	public void dismiss() {
+		mHandler.removeCallbacks(increamentRunnable);
+		increamentRunnable = null;
 		dialog.dismiss();
 	}
 	public boolean isShowing(){
@@ -182,7 +184,6 @@ public class LaputaLoadingAlertDialog {
 
 	public interface OnButtonClickListener {
 		public void onPositiveClick(View v, WheelView wv, int number);
-
 		public void onNegativeClick(View v, WheelView wv, int number);
 	}
 

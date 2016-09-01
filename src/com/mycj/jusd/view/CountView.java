@@ -1,8 +1,7 @@
 package com.mycj.jusd.view;
 
-import java.text.DecimalFormat;
 
-import com.mycj.jusd.base.BaseApp;
+import java.text.DecimalFormat;
 
 import android.animation.TypeEvaluator;
 import android.content.Context;
@@ -16,6 +15,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.mycj.jusd.base.BaseApp;
 
 public class CountView extends View {
 
@@ -55,7 +56,8 @@ public class CountView extends View {
 	}
 
 	private void init(Context context, AttributeSet attrs) {
-		DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+		DisplayMetrics displayMetrics = context.getResources()
+				.getDisplayMetrics();
 		float density = displayMetrics.density;
 		spaceY = SPACE_Y * density;
 		spaceX = SPACE_X * density;
@@ -103,30 +105,44 @@ public class CountView extends View {
 		pointPaint.setStrokeCap(Paint.Cap.ROUND);
 		pointPaint.setStyle(Paint.Style.FILL);
 		pointPaint.setStrokeJoin(Paint.Join.ROUND);
-		
-		
+
 		datas = new float[MAX_SIZE];
 	}
-	
+
+	public void setDatas(float[] datas, int pos) {
+		this.datas = datas;
+		size = datas.length;
+		// pointPos = size - 1;
+		pointPos = pos;
+		invalidate();
+	}
+
 	public void setDatas(float[] datas) {
 		this.datas = datas;
 		size = datas.length;
 		pointPos = size - 1;
 		invalidate();
 	}
-	
-	public void setMaxValue(float max){
+
+	public void setMaxValue(float max) {
 		this.maxValue = max;
 	}
-	
-	
+
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+	}
+
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		width = getWidth();
 		height = getHeight();
-		canvas.drawLine(spaceX + LINE_WIDTH, height - spaceY, width - spaceX, height - spaceY, linePaint);
-		canvas.drawLine(spaceX + LINE_WIDTH, height - spaceY, spaceX + LINE_WIDTH, spaceY, linePaint);
+		canvas.drawLine(spaceX + LINE_WIDTH, height - spaceY, width - spaceX,
+				height - spaceY, linePaint);
+		canvas.drawLine(spaceX + LINE_WIDTH, height - spaceY, spaceX
+				+ LINE_WIDTH, spaceY, linePaint);
 		if (datas != null && datas.length > 0 && datas.length <= MAX_SIZE) {
 			spanX = (int) ((width - 2 * spaceX) * 1.0 / (MAX_SIZE - 1));
 			drawPath(canvas);
@@ -159,7 +175,8 @@ public class CountView extends View {
 	public class PointEvaluator implements TypeEvaluator<PointItem> {
 
 		@Override
-		public PointItem evaluate(float fraction, PointItem startValue, PointItem endValue) {
+		public PointItem evaluate(float fraction, PointItem startValue,
+				PointItem endValue) {
 			return null;
 		}
 	}
@@ -178,12 +195,12 @@ public class CountView extends View {
 				x = i * spanX - rectTextCenter.centerX();
 				canvas.drawText(text, x + spaceX, y, textPaint);
 			} else {
-				if ((i + 1) % 2 != 0 ) {// 只绘制奇数
+				if ((i + 1) % 2 != 0) {// 只绘制奇数
 					if (i != datas.length - 2) {// 并且最后一个数不是奇数时，不绘制最后一个奇数
 						x = i * spanX - rectTextCenter.centerX();
 						canvas.drawText(text, x + spaceX, y, textPaint);
-					}	
-				} 
+					}
+				}
 			}
 
 		}
@@ -226,7 +243,8 @@ public class CountView extends View {
 	private PointF getPointByIndex(int i) {
 
 		float x = spaceX + LINE_WIDTH + i * spanX * 1.0f;
-		float y = (1 - 1.0f * datas[i] / maxValue) * (height - spaceY * 2) + spaceY;
+		float y = (1 - 1.0f * datas[i] / maxValue) * (height - spaceY * 2)
+				+ spaceY;
 		return new PointF(x, y);
 	}
 
@@ -248,17 +266,69 @@ public class CountView extends View {
 	public void setFormat(FormatType formatType) {
 		this.formatType = formatType;
 	}
-	
-	public String unit="";
-	public void setUnit(String unit){
+
+	public String unit = "";
+	private float downX;
+	private float downY;
+
+	public void setUnit(String unit) {
 		this.unit = unit;
 	}
 
 	private String format(float value) {
-		
+
 		DecimalFormat df = new DecimalFormat(formatType.getValue());
 		return df.format(value);
 
+	}
+
+	private int mLastX;
+	private int mLastY;
+
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent event) {
+		int x = (int) event.getX();
+		int y = (int) event.getY();
+		switch (event.getAction()) {
+		case MotionEvent.ACTION_DOWN:
+			if (getParent() != null) {
+				getParent().requestDisallowInterceptTouchEvent(true);
+			}
+			break;
+		case MotionEvent.ACTION_MOVE:
+			int deltaX = x - mLastX;
+			int deltaY = y - mLastY;
+			if (getParent() != null) {
+				if (Math.abs(deltaY) > Math.abs(deltaX) + 10) {
+					getParent().requestDisallowInterceptTouchEvent(false);
+				} else {
+					getParent().requestDisallowInterceptTouchEvent(true);
+				}
+			}
+			break;
+
+		default:
+			break;
+		}
+		mLastX = x;
+		mLastY = y;
+
+		/*
+		 * switch (event.getAction()) { case MotionEvent.ACTION_DOWN: downX =
+		 * getX(); downY = getY();
+		 * 
+		 * break; case MotionEvent.ACTION_MOVE: float moveX = getX(); float
+		 * moveY = getY(); if (getParent() != null) { if (Math.abs(moveY-downY)
+		 * > Math.abs(moveX - downX) + 50 ) { // if(Math.abs(moveX-oldX)<=100){
+		 * getParent().requestDisallowInterceptTouchEvent(false); }else{
+		 * getParent().requestDisallowInterceptTouchEvent(true); } } break; case
+		 * MotionEvent.ACTION_UP: case MotionEvent.ACTION_CANCEL: downX = 0;
+		 * downY = 0; if (getParent() != null) {
+		 * getParent().requestDisallowInterceptTouchEvent(false); } break;
+		 * 
+		 * default: break; }
+		 */
+		return super.dispatchTouchEvent(event);
 	}
 
 	@Override
@@ -268,7 +338,7 @@ public class CountView extends View {
 			donwX = event.getX();
 			break;
 		case MotionEvent.ACTION_MOVE:
-			if (datas!=null) {
+			if (datas != null) {
 				float moveX = event.getX();
 				if (Math.abs(moveX - donwX) > spanX / 3) {
 					if (moveX - donwX > 0) {// 右

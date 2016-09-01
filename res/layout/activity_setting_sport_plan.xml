@@ -27,11 +27,12 @@
             android:id="@+id/img_sync_setting"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:clickable="true"
             android:focusable="true"
-            android:padding="14dp"
-            android:src="@drawable/ic_setting_sync_data" />
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:src="@drawable/ic_nav_re_device" />
 
         <com.mycj.jusd.view.FangTextView
             android:layout_width="wrap_content"

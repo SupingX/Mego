@@ -1,0 +1,188 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:my="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_main_bg"
+    android:orientation="vertical"
+    tools:context="com.mycj.jusd.fragment.HomeFragment" >
+
+    <!-- top -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bg_main_tab" >
+
+        <com.mycj.jusd.view.AlphaImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:src="@drawable/ic_nav_back" />
+
+        <com.mycj.jusd.view.FangTextView
+            android:id="@+id/tv_info_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp"
+            android:text="2011/11/23"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/circle_text_date"
+            my:fang_typeface="NUM" />
+
+        <com.mycj.jusd.view.AlphaImageView
+            android:id="@+id/img_more"
+            android:onClick="setOffLineMap"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:src="@drawable/ic_nav_more" />
+    </RelativeLayout>
+	   <ScrollView 
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        > 
+        <LinearLayout 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            >
+    <RelativeLayout 
+        android:layout_height="240dp"
+        android:layout_width="match_parent"
+        >
+       
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="240dp"
+        android:clickable="true" />
+     <TextView 
+         android:id="@+id/tv_net_info"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="君思达"
+            android:textColor="@color/bg_main_tab"
+            android:visibility="visible"
+            />
+    
+    </RelativeLayout>
+	
+  
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/bg_sport_info"
+        android:orientation="vertical" >
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_map_title"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <com.mycj.jusd.view.FangRadioButton
+                android:id="@+id/tv_t_data"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="数据"
+                android:textColor="@color/text_grey"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:background="@color/bg_main_tab" />
+
+            <com.mycj.jusd.view.FangRadioButton
+                android:id="@+id/tv_t_speed"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="配速"
+                android:textColor="@color/text_grey"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:background="@color/bg_main_tab" />
+
+            <com.mycj.jusd.view.FangRadioButton
+                android:id="@+id/tv_t_per_step"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="步频"
+                android:textColor="@color/text_grey"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:background="@color/bg_main_tab" />
+
+            <com.mycj.jusd.view.FangRadioButton
+                android:id="@+id/tv_t_hr"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="心率"
+                android:textColor="@color/text_grey"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:background="@color/bg_main_tab" />
+
+            <com.mycj.jusd.view.FangRadioButton
+                android:id="@+id/tv_t_up"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="签到"
+                android:textColor="@color/text_grey"
+                android:textSize="16sp" />
+        </RadioGroup>
+<!--  android:background="@drawable/bg_map_info" -->
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            >
+        </FrameLayout>
+    </LinearLayout>
+    </LinearLayout>
+ </ScrollView> 
+</LinearLayout>

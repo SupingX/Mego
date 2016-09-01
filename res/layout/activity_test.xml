@@ -1,14 +1,50 @@
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:my="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    android:orientation="vertical" >
+
+    <com.mycj.jusd.view.NewHeartRateLineStatisticsView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="200dp" ></com.mycj.jusd.view.NewHeartRateLineStatisticsView>
+    
+    <Button 
+        android:onClick="test1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="个人设置"
+        />
+       <Button 
+               android:onClick="test2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="test"
+        />
+          <Button 
+                  android:onClick="test3"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="运动计划"
+        />
+             <Button 
+                     android:onClick="test4"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="test"
+        />
+                <Button 
+                        android:onClick="test5"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="个人提醒"
+        />
+                   <Button 
+                           android:onClick="test6"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="test"
+        />
 
-        <com.mycj.jusd.view.LaputaView
-            android:layout_width="200dp"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
+</LinearLayout>

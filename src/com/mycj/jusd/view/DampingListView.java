@@ -6,7 +6,7 @@ import android.util.DisplayMetrics;
 import android.widget.ListView;
 
 public class DampingListView extends ListView{
-	private static final int MAX_Y_OVERSCROLL_DISTANCE= 200;
+	private static final int MAX_Y_OVERSCROLL_DISTANCE= 10;
 	private int mMaxOverScrollDistanceY = 0;
 	
 	public DampingListView(Context context, AttributeSet attrs, int defStyleAttr) {

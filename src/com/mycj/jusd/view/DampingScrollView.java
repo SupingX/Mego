@@ -49,6 +49,10 @@ public class DampingScrollView extends ScrollView {
 			touchY = event.getY();
 		}
 		if (event.getAction()==MotionEvent.ACTION_MOVE){
+//			float y = event.getY();
+//			if(Math.abs(y-touchY)<100){
+//				return false;
+//			}
 			float y = event.getY();
 			if(Math.abs(y-touchY)>20){
 				return true;

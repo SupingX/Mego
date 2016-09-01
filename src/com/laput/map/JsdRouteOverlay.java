@@ -6,7 +6,6 @@ import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.Polyline;
-import com.baidu.mapapi.search.core.RouteLine;
 
 public class JsdRouteOverlay extends OverlayManager{
 	/** 线路 **/
@@ -34,6 +33,10 @@ public class JsdRouteOverlay extends OverlayManager{
 	/**------------------------------------**/
 	public void setData(JsdRouteLine line){
 		this.line = line;
+	}
+	
+	public JsdRouteLine getLine(){
+		return this.line;
 	}
 	
 	

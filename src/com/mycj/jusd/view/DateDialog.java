@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mycj.jusd.R;
+import com.mycj.jusd.util.DateUtil;
 
 public class DateDialog extends AbstraceDialog {
 	private Context context;

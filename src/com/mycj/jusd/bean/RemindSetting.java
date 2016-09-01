@@ -1,17 +1,25 @@
 package com.mycj.jusd.bean;
 
-public class RemindSetting {
-	private boolean incomingOnoff;
-	private boolean alarmOnoff;
-	private String alarmTime;
-	private boolean longSitOnoff;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+
+public class RemindSetting implements Parcelable {
+	private int incomingOnoff;
+	private int alarmOnoff;
+	private String alarmTime; // 00:00
+	private int longSitOnoff;
 	private int longSitValue;
-	private boolean birthdayOnoff;
-	private String birthdayDate;
-	private String birthdayTime;
-	private boolean nowtimeOnoff;
-	public RemindSetting(boolean incomingOnoff, boolean alarmOnoff, String alarmTime, boolean longSitOnoff, int longSitValue, boolean birthdayOnoff, String birthdayDate, String birthdayTime,
-			boolean nowtimeOnoff) {
+	private int birthdayOnoff;
+//	private String birthdayDate; //11/31
+	private String birthdayTime; //22:00
+	private int nowtimeOnoff;
+
+	
+	
+	public RemindSetting(int incomingOnoff, int alarmOnoff, String alarmTime,
+			int longSitOnoff, int longSitValue, int birthdayOnoff,
+			String birthdayTime, int nowtimeOnoff) {
 		super();
 		this.incomingOnoff = incomingOnoff;
 		this.alarmOnoff = alarmOnoff;
@@ -19,7 +27,6 @@ public class RemindSetting {
 		this.longSitOnoff = longSitOnoff;
 		this.longSitValue = longSitValue;
 		this.birthdayOnoff = birthdayOnoff;
-		this.birthdayDate = birthdayDate;
 		this.birthdayTime = birthdayTime;
 		this.nowtimeOnoff = nowtimeOnoff;
 	}
@@ -27,34 +34,30 @@ public class RemindSetting {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "RemindSetting [incomingOnoff=" + incomingOnoff + ", alarmOnoff=" + alarmOnoff + ", alarmTime=" + alarmTime + ", longSitOnoff=" + longSitOnoff + ", longSitValue=" + longSitValue
-				+ ", birthdayOnoff=" + birthdayOnoff + ", birthdayDate=" + birthdayDate + ", birthdayTime=" + birthdayTime + ", nowtimeOnoff=" + nowtimeOnoff + "]";
-	}
-	public boolean isIncomingOnoff() {
-		return incomingOnoff;
-	}
-	public void setIncomingOnoff(boolean incomingOnoff) {
-		this.incomingOnoff = incomingOnoff;
-	}
-	public boolean isAlarmOnoff() {
-		return alarmOnoff;
-	}
-	public void setAlarmOnoff(boolean alarmOnoff) {
-		this.alarmOnoff = alarmOnoff;
-	}
 	public String getAlarmTime() {
 		return alarmTime;
 	}
+	
+	public int getAlarmHour(){
+		try {
+			return Integer.valueOf(alarmTime.split(":")[0]);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public int getAlarmMin(){
+		try {
+			return Integer.valueOf(alarmTime.split(":")[1]);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 	public void setAlarmTime(String alarmTime) {
 		this.alarmTime = alarmTime;
-	}
-	public boolean isLongSitOnoff() {
-		return longSitOnoff;
-	}
-	public void setLongSitOnoff(boolean longSitOnoff) {
-		this.longSitOnoff = longSitOnoff;
 	}
 	public int getLongSitValue() {
 		return longSitValue;
@@ -62,29 +65,115 @@ public class RemindSetting {
 	public void setLongSitValue(int longSitValue) {
 		this.longSitValue = longSitValue;
 	}
-	public boolean isBirthdayOnoff() {
-		return birthdayOnoff;
-	}
-	public void setBirthdayOnoff(boolean birthdayOnoff) {
-		this.birthdayOnoff = birthdayOnoff;
-	}
-	public String getBirthdayDate() {
-		return birthdayDate;
-	}
-	public void setBirthdayDate(String birthdayDate) {
-		this.birthdayDate = birthdayDate;
-	}
+	
+	
 	public String getBirthdayTime() {
 		return birthdayTime;
 	}
 	public void setBirthdayTime(String birthdayTime) {
 		this.birthdayTime = birthdayTime;
 	}
-	public boolean isNowtimeOnoff() {
+	
+	public int getBirthdayHour(){
+		
+		try {
+			return Integer.valueOf(birthdayTime.split(":")[0]);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	
+	public int getBirthdayMin(){
+		
+		try {
+			return Integer.valueOf(birthdayTime.split(":")[1]);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	
+	
+	public int getIncomingOnoff() {
+		return incomingOnoff;
+	}
+	public void setIncomingOnoff(int incomingOnoff) {
+		this.incomingOnoff = incomingOnoff;
+	}
+	public int getAlarmOnoff() {
+		return alarmOnoff;
+	}
+	public void setAlarmOnoff(int alarmOnoff) {
+		this.alarmOnoff = alarmOnoff;
+	}
+	public int getLongSitOnoff() {
+		return longSitOnoff;
+	}
+	public void setLongSitOnoff(int longSitOnoff) {
+		this.longSitOnoff = longSitOnoff;
+	}
+	public int getBirthdayOnoff() {
+		return birthdayOnoff;
+	}
+	public void setBirthdayOnoff(int birthdayOnoff) {
+		this.birthdayOnoff = birthdayOnoff;
+	}
+	public int getNowtimeOnoff() {
 		return nowtimeOnoff;
 	}
-	public void setNowtimeOnoff(boolean nowtimeOnoff) {
+	public void setNowtimeOnoff(int nowtimeOnoff) {
 		this.nowtimeOnoff = nowtimeOnoff;
 	}
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		/**
+		 * 	private int incomingOnoff;
+	private int alarmOnoff;
+	private String alarmTime; // 00:00
+	private int longSitOnoff;
+	private int longSitValue;
+	private int birthdayOnoff;
+	private String birthdayDate; //11/31
+	private String birthdayTime; //22:00
+	private int nowtimeOnoff;
+		 */
+		
+		dest.writeInt(incomingOnoff);
+		dest.writeInt(alarmOnoff);
+		dest.writeString(alarmTime);
+		dest.writeInt(longSitOnoff);
+		dest.writeInt(longSitValue);
+		dest.writeInt(birthdayOnoff);
+		dest.writeString(birthdayTime);
+		dest.writeInt(nowtimeOnoff);
+	}
+	
+	public static final Parcelable.Creator<RemindSetting> CREATOR = new Creator<RemindSetting>() {
 
+		@Override
+		public RemindSetting createFromParcel(Parcel source) {
+			int incomingOnoff = source.readInt();
+			int alarmOnoff = source.readInt();
+			String alarmTime = source.readString();
+			int longSitOnoff = source.readInt();
+			int longSitValue = source.readInt();
+			int birthdayOnoff = source.readInt();
+			String birthdayTime = source.readString();
+			int nowtimeOnoff = source.readInt();
+			return new RemindSetting(incomingOnoff, alarmOnoff, alarmTime, longSitOnoff, longSitValue, birthdayOnoff, birthdayTime, nowtimeOnoff);
+		}
+
+		@Override
+		public RemindSetting[] newArray(int size) {
+			return new RemindSetting[size];
+		}
+	};
 }

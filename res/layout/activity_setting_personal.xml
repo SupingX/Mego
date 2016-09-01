@@ -27,11 +27,12 @@
             android:id="@+id/img_sync_setting"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:clickable="true"
             android:focusable="true"
-                 android:padding="14dp"
-            android:src="@drawable/ic_setting_sync_data" />
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:src="@drawable/ic_nav_re_device" />
 
         <com.mycj.jusd.view.FangTextView
             android:layout_width="wrap_content"
@@ -293,9 +294,7 @@
 					</LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
-            <!-- line 3 -->
-			<LinearLayout
+<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -307,10 +306,59 @@
                     android:layout_height="40dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
+                    android:gravity="center"
                     android:orientation="horizontal" >
                     
-					
+					<LinearLayout 
+					    android:layout_height="match_parent"
+					    android:layout_width="0dp"
+					    android:orientation="horizontal"
+					    android:layout_weight="1"
+					    >
 					    <com.mycj.jusd.view.FangTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="4"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:text="步长设置"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        fang:fang_typeface="JIAN" />
+
+                      <com.mycj.jusd.view.FangCheckBox
+                    android:id="@+id/cb_remind_step_length"
+                    android:layout_width="36dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="18dp"
+                    android:button="@null"
+                    android:background="@drawable/selector_check_box"
+               	 />
+					    
+					</LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/bg_main_tab" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                    
+					<LinearLayout 
+					    android:layout_height="match_parent"
+					    android:layout_width="0dp"
+					    android:orientation="horizontal"
+					    android:layout_weight="1"
+					    >
+					  <com.mycj.jusd.view.FangTextView
                         android:id="@+id/tv_step_length"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -341,21 +389,14 @@
                         fang:fang_alpha="true"
                         fang:fang_typeface="JIAN" />
 					    
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/bg_main_tab" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:orientation="horizontal" >
-                   
+					</LinearLayout>                    
                     
-					
+					<LinearLayout 
+					    android:layout_height="match_parent"
+					    android:layout_width="0dp"
+					    android:orientation="horizontal"
+					    android:layout_weight="1"
+					    >
 					    <com.mycj.jusd.view.FangTextView
                         android:id="@+id/tv_run_length"
                         android:layout_width="wrap_content"
@@ -369,7 +410,7 @@
                         android:textSize="12sp"
                         fang:fang_typeface="JIAN" />
 
-                    <com.mycj.jusd.view.FangTextView
+  <com.mycj.jusd.view.FangTextView
                         android:id="@+id/tv_run_length_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -387,8 +428,10 @@
                         fang:fang_alpha="true"
                         fang:fang_typeface="JIAN" />
 					    
+					</LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+            <!-- line 3 -->
 		
 	
             <LinearLayout

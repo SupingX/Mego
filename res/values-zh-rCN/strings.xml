@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">君思达手表</string>
+    <string name="app_name">Migo</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -77,7 +77,7 @@
     <string name="en_">英制</string>
     <string name="birthday">出生年月</string>
     <string name="sleep_jiance">睡眠检测</string>
-    
+        <string name="step_per_sencod">步/秒</string>
      <string name="remind_date">提醒日期</string>
     <string name="remind_time">提醒时间</string>
     <string name="disconnect_info">手环已断开连接</string>
@@ -99,7 +99,7 @@
     <string name="total_distance">累计里程</string>
     <string name="total_time">累计时间</string>
     <string name="total_steps">累计步数</string>
-    <string name="times_per_min">次/分钟</string>
+    <string name="bpm">次/分钟</string>
     <string name="times">次</string>
     <string name="now_hr">当前心率</string>
     <string name="mi">米</string>

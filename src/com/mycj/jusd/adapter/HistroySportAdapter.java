@@ -1,4 +1,4 @@
-package com.mycj.jusd.adapter;
+/*package com.mycj.jusd.adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +12,11 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.mycj.jusd.R;
-import com.mycj.jusd.bean.HistorySport;
+import com.mycj.jusd.bean.StepHistorySport;
 
 public class HistroySportAdapter extends BaseAdapter{
-	private List<HistorySport> datas = new ArrayList<HistorySport>(); 
-	public HistroySportAdapter(List<HistorySport> datas){
+	private List<StepHistorySport> datas = new ArrayList<StepHistorySport>(); 
+	public HistroySportAdapter(List<StepHistorySport> datas){
 		this.datas = datas;
 	}
 
@@ -50,7 +50,7 @@ public class HistroySportAdapter extends BaseAdapter{
 		}
 		
 		//设置数据
-		HistorySport historySport = datas.get(position);
+		StepHistorySport historySport = datas.get(position);
 		String date = historySport.getDate();
 		int step = historySport.getStep();
 		int sportTime = historySport.getSportTime();
@@ -124,3 +124,4 @@ public class HistroySportAdapter extends BaseAdapter{
 	}
 
 }
+*/

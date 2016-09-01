@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:my="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -50,8 +51,61 @@
             android:paddingRight="20dp"
             android:src="@drawable/ic_nav_more" />
     </RelativeLayout>
+<com.mycj.jusd.view.DampingScrollView android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     >
+        <LinearLayout 
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            >
+       <!-- date -->
+	<LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:id="@+id/rg_count_type"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
 
-    <!-- date -->
+            <com.mycj.jusd.view.FangRadioButton
+                android:id="@+id/rb_step"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_rb"
+                android:button="@null"
+                android:paddingBottom="2dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="2dp"
+                android:text="计步"
+                android:checked="true"
+                android:textColor="@drawable/selector_rb_text" />
+               <com.mycj.jusd.view.FangRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:text="+"
+                           android:checked="true"
+                android:padding="12dp"
+               	android:textStyle="bold"
+                android:textColor="@color/bg_main_tab" />
+
+            <com.mycj.jusd.view.FangRadioButton
+                           android:checked="true"
+                android:id="@+id/rb_path"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_rb"
+                android:button="@null"
+                android:paddingBottom="2dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="2dp"
+                android:text="轨迹"
+                android:textColor="@drawable/selector_rb_text" />
+        </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -331,6 +385,26 @@
     		    android:layout_marginLeft="12dp"
     		    android:layout_marginRight="12dp"
     		    >
+				<com.mycj.jusd.view.FangRadioButton 
+    		        android:layout_height="match_parent"
+    		        android:layout_width="wrap_content"
+    		        android:text="睡眠"
+    		        android:paddingLeft="12dp"
+    		        android:paddingRight="12dp"
+    		            android:layout_gravity="center_vertical"
+    		        android:button="@null"
+    		        my:f_typeface="JIAN"
+    		           android:id="@+id/rb_sleep_total"
+    		        android:textColor="@drawable/selector_radio_btn_color"
+    		        android:textSize="12sp"
+    		        />
+    		    <View 
+    		          android:layout_height="match_parent"
+    		        android:layout_width="1dp"
+    		        android:background="@color/bg_main_tab"
+    		        android:layout_marginTop="8dp"
+    		        android:layout_marginBottom="8dp"
+    		        />
     		    <com.mycj.jusd.view.FangRadioButton 
     		        android:layout_height="match_parent"
     		        android:layout_width="wrap_content"
@@ -377,6 +451,6 @@
                 >
                 </com.mycj.jusd.view.CountView>
 
-    
+    </LinearLayout></com.mycj.jusd.view.DampingScrollView>
 
 </LinearLayout>

@@ -11,12 +11,10 @@ import android.widget.TextView;
 
 import com.mycj.jusd.R;
 import com.mycj.jusd.base.BaseActivity;
-import com.mycj.jusd.bean.HistorySport;
-import com.mycj.jusd.bean.StaticValue;
+import com.mycj.jusd.bean.JunConstant;
 import com.mycj.jusd.util.DataUtil;
 import com.mycj.jusd.util.ShareUtil;
 import com.mycj.jusd.view.AlphaImageView;
-import com.mycj.jusd.view.DateUtil;
 import com.mycj.jusd.view.PopMoreView;
 import com.mycj.jusd.view.PopMoreView.OnPopClickListener;
 
@@ -34,7 +32,7 @@ public class SportInfoActivity extends BaseActivity implements OnClickListener {
 	private Handler mHandler = new Handler(){
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			case StaticValue.MSG_SHARE:
+			case JunConstant.MSG_SHARE:
 				String path  = (String) msg.obj;
 				ShareUtil.shareImage(path, SportInfoActivity.this,"分享");
 				break;
@@ -50,11 +48,11 @@ public class SportInfoActivity extends BaseActivity implements OnClickListener {
 		setContentView(R.layout.activity_sport_info);
 		initViews();
 		Intent intent = getIntent();
-		HistorySport historySport = null;
+	/*	StepHistorySport historySport = null;
 		if (intent != null) {
 			historySport = intent.getParcelableExtra("historySport");
 		}
-		initValues(historySport);
+		initValues(historySport);*/
 
 	}
 
@@ -73,7 +71,7 @@ public class SportInfoActivity extends BaseActivity implements OnClickListener {
 
 	}
 
-	private void initValues(HistorySport historySport) {
+/*	private void initValues(StepHistorySport historySport) {
 		String date = "--/--/--";
 		int step = 0;
 		int sportTime = 0;
@@ -89,7 +87,7 @@ public class SportInfoActivity extends BaseActivity implements OnClickListener {
 		tvSportInfoDistance.setText(DataUtil.getDistanceWithUnit(step, this));
 		tvSportInfoAvgSpeed.setText(getAvgSpeed(step, sportTime));
 		tvSportInfoCal.setText(DataUtil.getKalWithUnit(step, this));
-	}
+	}*/
 
 	private String getAvgSpeed(int step, int sportTime) {
 		if (sportTime == 0) {

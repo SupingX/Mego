@@ -52,15 +52,16 @@
         android:paddingBottom="@dimen/home_1"
         android:paddingTop="12dp">
 
-        <RadioGroup
+        <LinearLayout
             android:layout_weight="1"
+            android:id="@+id/rg_type"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:orientation="horizontal" >
 
-            <com.mycj.jusd.view.FangRadioButton
-                android:id="@+id/rb_step"
+            <com.mycj.jusd.view.FangTextView
+                android:id="@+id/tv_step"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_rb"
@@ -72,8 +73,8 @@
                 android:text="计步"
                 android:textColor="@drawable/selector_rb_text" />
 
-            <com.mycj.jusd.view.FangRadioButton
-                android:id="@+id/rb_path"
+            <com.mycj.jusd.view.FangTextView
+                android:id="@+id/tv_path"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
@@ -85,7 +86,7 @@
                 android:paddingTop="2dp"
                 android:text="轨迹"
                 android:textColor="@drawable/selector_rb_text" />
-        </RadioGroup>
+        </LinearLayout>
 
         <com.mycj.jusd.view.FangTextView
                  android:layout_weight="1"
@@ -147,40 +148,111 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:layout_marginBottom="12dp"
             android:layout_centerInParent="true"
             android:id="@+id/line_hor"/>
-
+		
         <LinearLayout
-            android:paddingBottom="10dp"
-            android:paddingTop="3dp"
             android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_above="@id/line_hor"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_height="wrap_content">
-            <com.mycj.jusd.view.FangTextView
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical" >
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1222222"
-                    my:fang_typeface="NUM"
-                android:id="@+id/tv_circle_step"
-                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="3dp" >
 
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/circle_text_step" />
-            <com.mycj.jusd.view.FangTextView
-                android:id="@+id/tv_unit"
+                <com.mycj.jusd.view.FangTextView
+                    android:id="@+id/tv_circle_step"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="1222222"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/circle_text_step"
+                    my:fang_typeface="NUM" />
+
+                <com.mycj.jusd.view.FangTextView
+                    android:id="@+id/tv_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="步"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/circle_text_step_unit"
+                    my:fang_typeface="JIAN" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_ll"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-             android:layout_gravity="bottom"
-                android:text="步"
-                    my:fang_typeface="JIAN"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/circle_text_step_unit" />
+                android:orientation="horizontal" >
 
+                <com.mycj.jusd.view.FangTextView
+                    android:id="@+id/tv_info_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:gravity="end|center_vertical"
+                    android:paddingBottom="2dp"
+                    android:paddingTop="3dp"
+                    android:text="距离"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    my:fang_typeface="JIAN" />
 
+                <com.mycj.jusd.view.FangTextView
+                    android:id="@+id/tv_circle_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
+                    android:text="1000公里"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    my:fang_typeface="JIAN" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <com.mycj.jusd.view.FangTextView
+                    android:id="@+id/tv_info_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end|center_vertical"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="2dp"
+                    android:text="用时"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    my:fang_typeface="JIAN" />
+
+                <com.mycj.jusd.view.FangTextView
+                    android:id="@+id/tv_circle_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
+                    android:text="10:22:33"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </LinearLayout>
+        
+		<!-- 
         <LinearLayout
             android:layout_below="@+id/line_hor"
             android:layout_width="wrap_content"
@@ -276,7 +348,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="14sp" />
         </LinearLayout>
-
+ -->
 
 
     </RelativeLayout>

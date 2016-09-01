@@ -1,18 +1,143 @@
-<com.mycj.jusd.view.DampingScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:my="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8f9" >
+      android:orientation="vertical" 
+    >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
-
-        <com.mycj.jusd.view.PaceCountView
+	<LinearLayout 
+	    android:layout_marginTop="12dp"
+	    android:layout_marginBottom="12dp"
+	    android:layout_height="wrap_content"
+	    android:layout_width="match_parent"
+	    android:orientation="horizontal"
+	    >
+        <LinearLayout 
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+            <TextView 
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="分段"
+                  android:textColor="#fff"
+                       android:gravity="center"
+                />
+              <TextView 
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="（圈）"
+                    android:textColor="#fff"
+                   android:textSize="10sp"
+                       android:gravity="center"
+                />
+        </LinearLayout>
+             <LinearLayout 
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+                android:layout_weight="1"
+            >
+            <TextView 
+                           android:textColor="#fff"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="签到 时间"
+                       android:gravity="center"
+                />
+              <TextView 
+           android:textColor="#fff"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="（时分）"
+                   android:textSize="10sp"
+                       android:gravity="center"
+                />
+        </LinearLayout>
+             <LinearLayout 
+                     android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            >
+            <TextView 
+                           android:textColor="#fff"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="用时"
+                       android:gravity="center"
+                />
+              <TextView 
+                         android:textColor="#fff"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="（分钟:秒） "
+                   android:textSize="10sp"
+                       android:gravity="center"
+                />
+        </LinearLayout>
+               <LinearLayout 
+                     android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            >
+            <TextView 
+                           android:textColor="#fff"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="距离"
+                       android:gravity="center"
+                />
+              <TextView 
+                         android:textColor="#fff"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="（千米） "
+                   android:textSize="10sp"
+                       android:gravity="center"
+                />
+        </LinearLayout>
+        
+     
+             <LinearLayout 
+                     android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            >
+            <TextView 
+                            android:textColor="#fff"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="配速"
+                       android:gravity="center"
+                />
+              <TextView 
+                         android:textColor="#fff"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:text="（分钟/公里）"
+                />
+        </LinearLayout>
+        </LinearLayout>
+        
+        <View android:layout_height="2dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@color/bg_main_tab"/>
+        <ListView
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/lv_sign"
+            />
+            
     </LinearLayout>
-
-</com.mycj.jusd.view.DampingScrollView>

@@ -52,6 +52,26 @@
     </RelativeLayout>
 
     <!-- date -->
+   <in.srain.cube.views.ptr.PtrClassicFrameLayout
+        android:id="@+id/list_view_with_empty_view_fragment_ptr_frame"
+        xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        cube_ptr:ptr_duration_to_close="200"
+        cube_ptr:ptr_duration_to_close_header="1000"
+        cube_ptr:ptr_keep_header_when_refresh="true"
+        cube_ptr:ptr_pull_to_fresh="false"
+        cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+        cube_ptr:ptr_resistance="1.7">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 	<RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,7 +138,7 @@
             android:textColor="@android:color/white"
             android:textSize="22sp"
             my:fang_alpha="true" />
-
+		
         <com.mycj.jusd.view.FangTextView
             android:id="@+id/down"
             android:layout_width="44dp"
@@ -152,6 +172,7 @@
             android:orientation="horizontal" >
 
             <RelativeLayout
+                android:visibility="visible"
                 android:id="@+id/rl_history_sport"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
@@ -216,7 +237,7 @@
                     android:src="@drawable/ic_sport_steps" />
 
                 <com.mycj.jusd.view.FangTextView
-                    android:id="@+id/tv_sport_steps"
+                    android:id="@+id/tv_path_step"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -224,7 +245,7 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="212.1小时"
+                    android:text="212.1步"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
                     my:fang_typeface="JIAN" />
@@ -323,7 +344,7 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="212.1小时"
+                    android:text="212.1公里"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
                     my:fang_typeface="JIAN" />
@@ -373,7 +394,7 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="212.1小时"
+                    android:text="212.1千卡"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
                     my:fang_typeface="JIAN" />
@@ -412,6 +433,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </com.mycj.jusd.view.DampingListView>
+        <ListView
+        android:scrollbars="@null"
+        android:listSelector="@drawable/selector_item_history_sport"
+        android:layout_marginTop="20dp"
+        android:id="@+id/lv_history_path"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </ListView>
+   </LinearLayout> </FrameLayout></in.srain.cube.views.ptr.PtrClassicFrameLayout>
     
 
 </LinearLayout>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mycj.jusd"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="2"
+    android:versionName="beat1.3" >
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -75,7 +75,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         <service
-            android:name="com.laput.service.XBlueService"
+            android:name="com.mycj.jusd.service.BlueService"
             android:enabled="true" >
         </service>
 
@@ -96,43 +96,63 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.activity.DeviceAcitivy"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.activity.SettingPersonalActivity"
-            android:label="@string/title_activity_personal_setting" >
+            android:label="@string/title_activity_personal_setting"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.activity.SettingSyncDataActivity"
-            android:label="@string/title_activity_sync_data" >
+            android:label="@string/title_activity_sync_data"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.activity.SettingRemindActivity"
-            android:label="@string/title_activity_setting_remind" >
+            android:label="@string/title_activity_setting_remind"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.activity.HistorySleepActivity"
-            android:label="@string/title_activity_history_sleep" >
+            android:label="@string/title_activity_history_sleep"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.activity.HistorySportActivity"
-            android:label="@string/title_activity_history_sport" >
+            android:label="@string/title_activity_history_sport"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.activity.CountActivity"
-            android:label="@string/title_activity_count" >
+            android:label="@string/title_activity_count"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.activity.SportInfoActivity"
-            android:label="@string/title_activity_sport_info" >
+            android:label="@string/title_activity_sport_info"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.activity.SpalishActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -141,24 +161,87 @@
         </activity>
         <activity
             android:name="com.laput.map.MapActivity"
-            android:label="@string/title_activity_map" >
+            android:label="@string/title_activity_map"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".TestActivity"
-            android:label="@string/title_activity_test" >
+            android:label="@string/title_activity_test"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AboutActivity"
-            android:label="@string/title_activity_about" >
+            android:label="@string/title_activity_about"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".SettingSportPlanActivity"
-            android:label="@string/title_activity_setting_sport_plan" >
+            android:name="com.mycj.jusd.ui.activity.SettingSportPlanActivity"
+            android:label="@string/title_activity_setting_sport_plan"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".OffLineActivity"
-            android:label="@string/title_activity_off_line" >
+            android:label="@string/title_activity_off_line"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".StepStatisticsActivity"
+            android:label="@string/title_activity_step_statistics"
+            android:launchMode="singleTop" >
+        </activity>
+        <activity
+            android:name=".PathStatisticsActivity"
+            android:label="@string/title_activity_path_statistics" >
+        </activity>
+
+        <!--  
+
+        <receiver android:name=".NotifyReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.DATE_CHANGED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BAD_REMOVAL" />
+                <action android:name="android.intent.action.MEDIA_EJECT" />
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.MEDIA_REMOVED" />
+                <action android:name="android.intent.action.MEDIA_SCANNER_FINISHED" />
+                <action android:name="android.intent.action.MEDIA_SCANNER_STARTED" />
+                <action android:name="android.intent.action.MEDIA_SHARED" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
+        
+        -->
+        
+        
+        
     </application>
 
 </manifest>

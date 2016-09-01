@@ -2,6 +2,9 @@ package com.mycj.jusd.view;
 
 
 
+import com.mycj.jusd.R;
+import com.mycj.jusd.view.FreshCircleView.OnAnimatorCancelListener;
+
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ObjectAnimator;
@@ -15,9 +18,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-
-import com.mycj.jusd.R;
-import com.mycj.jusd.view.FreshCircleView.OnAnimatorCancelListener;
 
 public class XplAlertDialog {
 	private Context context;
@@ -164,6 +164,9 @@ public class XplAlertDialog {
 
 	public void dismiss() {
 		dialog.dismiss();
+	}
+	public boolean isShowing(){
+		return dialog.isShowing();
 	}
 
 	public interface OnButtonClickListener {

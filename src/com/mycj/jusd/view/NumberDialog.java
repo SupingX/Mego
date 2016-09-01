@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mycj.jusd.R;
+import com.mycj.jusd.util.DateUtil;
 import com.mycj.jusd.util.DisplayUtil;
 
 

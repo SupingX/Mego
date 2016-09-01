@@ -1,14 +1,22 @@
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:my="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+  >
+<LinearLayout 
+    android:layout_width="match_parent"
+     android:orientation="vertical"
+    android:layout_height="wrap_content" >
 
-        <com.mycj.jusd.view.PaceCountView
+      <com.mycj.jusd.view.NewStepFreqLineStatisticsView
+          android:padding="12dp"
+          android:id="@+id/sl_speed"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="300dp" ></com.mycj.jusd.view.NewStepFreqLineStatisticsView>
+        
+        
     </LinearLayout>
 
+</ScrollView>

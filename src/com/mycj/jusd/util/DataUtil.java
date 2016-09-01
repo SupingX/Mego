@@ -75,6 +75,9 @@ public class DataUtil {
 		return bytes;
 	}
 
+	
+	
+	
 	/**
 	 * 取得在16进制字符串中各char所代表的16进制数
 	 */
@@ -442,7 +445,7 @@ public class DataUtil {
 		}else{
 			sb.append(format(DataUtil.getDistanceValue(step) * 60 * 60*1.0 / sportTime));
 		}
-		sb.append("公里/小时");
+		sb.append("分钟/公里");
 		return sb.toString();
 	}
 
