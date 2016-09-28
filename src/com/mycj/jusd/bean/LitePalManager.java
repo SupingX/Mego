@@ -491,4 +491,39 @@ public class LitePalManager {
 		return find;
 	}
 
+	public List<SportHistory> getSportHistoryListByIdx(List<SportHistory> all) {
+		if (all == null || all.size() == 0 ) {
+			return null;
+		}
+		List<SportHistory> list = new ArrayList<>();
+		SportHistory sh = all.get(0);
+		if (all.size() == 1) {
+			list.add(sh);
+			return list;
+		}
+		
+		for (int i = 1; i < all.size(); i++) {
+			SportHistory sportHistory = all.get(i);
+			if (sportHistory.getSportDate().equals(sh.getSportDate())
+					&&sportHistory.getSportIndex() == sh.getSportIndex()) {
+				int consuming = sportHistory.getConsuming();
+				int consuming2 = sh.getConsuming();
+				sh.setConsuming(consuming2+consuming);
+				int step = sportHistory.getStep();
+				int step2 = sh.getStep();
+				sh.setStep(step2+step);
+				int distance = sportHistory.getDistance();
+				int distance2 = sh.getDistance();
+				sh.setDistance(distance2+distance);
+			}else{
+				list.add(sh);
+				sh = sportHistory;
+			}
+			Log.e("", "list :" +list);
+		}
+		
+		
+		return list;
+	}
+
 }

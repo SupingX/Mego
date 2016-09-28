@@ -319,8 +319,8 @@ public class PathStatisticsActivity extends BaseActivity implements
 				.fromResource(R.drawable.ic_pos);
 		map.setMyLocationConfigeration(new MyLocationConfiguration(
 				locationMode, false, null));
-		MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(19.0f);
-//		map.animateMapStatus(msu);
+		MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(13.0f);
+		map.animateMapStatus(msu);
 		map.setMapStatus(msu);
 		map.setOnMapClickListener(new OnMapClickListener() {
 
@@ -618,7 +618,7 @@ public class PathStatisticsActivity extends BaseActivity implements
 					overlay = new JsdWalkingRouteOverlay(map);
 					overlay.setData(line);
 					overlay.addToMap();
-					overlay.zoomToSpan();
+					overlay.zoomToSpan();// 使所有的在视图范围内.
 
 				}else{
 					Log.e("zeej", "list2 为空");
@@ -627,7 +627,6 @@ public class PathStatisticsActivity extends BaseActivity implements
 			
 			}
 		}).start();
-		
 	}
 	
 	private void initWalkingRouteResult() {
@@ -635,7 +634,6 @@ public class PathStatisticsActivity extends BaseActivity implements
 //		if (overlay !=null) {
 //			return ;
 //		}
-		
 		// 1
 		LatLng p1 = new LatLng(22.552409155404796, 114.0506371740731);
 		LatLng p2 = new LatLng(22.552500943035565, 114.0509695471116);

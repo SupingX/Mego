@@ -129,6 +129,9 @@ public class CountActivity extends BaseActivity implements OnClickListener,
 						sportMaxValue = 30000;
 					}
 					break;
+					// wifif ijifi ijija alafo
+					// 
+					
 				case R.id.rb_sport_time:
 					sportUnit = "分钟";
 					sportMaxValue = JunConstant.MAX_TIME;
@@ -147,7 +150,6 @@ public class CountActivity extends BaseActivity implements OnClickListener,
 				case R.id.rb_sport_distance:
 					sportUnit = "千米";
 					f = FormatType.FORMAT_2;
-				
 					datas = distances;
 					float maxData = getMaxData(datas);
 					sportMaxValue = JunConstant.MAX_DISTANCE;

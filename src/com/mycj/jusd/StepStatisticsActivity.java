@@ -52,7 +52,7 @@ public class StepStatisticsActivity extends BaseActivity implements
 	private MapDataFragment dataFragment;
 	private FragmentManager mFragmentManager;
 	StringBuffer info = new StringBuffer();
-	private Handler mHandler = new Handler() {
+	private static Handler mHandler = new Handler() {
 
 	};
 

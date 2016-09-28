@@ -58,10 +58,6 @@ import com.mycj.jusd.view.LaputaLoadingAlertDialog;
 /**
  * Created by zeej on 2015/11/19.
  * 
- * 10-11 8  4  0 3200 
- * 11-12 10 5  0 4000
- * 12-13 12 6  2 4800
- *       30 15 2 12000
  */
 public class MainActivity extends BaseActivity {
 	private LaputaLoadingAlertDialog loadDialog;
@@ -104,9 +100,11 @@ public class MainActivity extends BaseActivity {
 				//0301005200780200000A000A 00 15D21600080000
 				
 //				MilkUtil.saveSportHistoryList();
-				List<SportHistory> findAll = LitePalManager.instance().getSportHistoryListByMonth(new Date());
-				
 //				List<SportHistory> findAll = DataSupport.findAll(SportHistory.class);
+			
+				
+			/*	
+			 	List<SportHistory> findAll = LitePalManager.instance().getSportHistoryListByMonth(new Date());
 				if (findAll!=null) {
 					Log.e("", "findAll :" + findAll.size());
 					for (int i = 0; i < findAll.size(); i++) {
@@ -115,6 +113,8 @@ public class MainActivity extends BaseActivity {
 				}else{
 					Log.e("", "findAll为空 " );
 				}
+				
+				*/
 				
 				break;
 			default:
@@ -147,109 +147,11 @@ public class MainActivity extends BaseActivity {
 					SharedPreferenceUtil.put(MainActivity.this, "isFirst", false);
 				}
 			}).start();
-			
-//			loadProtocolNotifyManager();
-//			Log.e("", "开始---〉");
-//			new Thread(runProtocol).start();
+
 		}
 	}
 
-	private void loadProtocolNotifyManager() {
-		manager =ProtocolNotifyManager.newInstance();
-		manager.setOnDataParseResuletListener(new OnDataParseResuletListener() {
-			
-			@Override
-			public void onWatchSetting(String msg, WatchSetting setting) {
-				BroadSender.sendBroadcastForWatchSetting(setting, getApplicationContext());
-			}
-			
-			@Override
-			public void onSyncHistorySportInfoStatus(String msg, int status) {
-				// 广播每一条历史运动信息开始结束状态
-				BroadSender.sendBroadcastForHistorySportStatus(status, getApplicationContext());
-			}
-			
-			@Override
-			public void onSyncHistorySportInfo(String msg, com.mycj.jusd.bean.news.SportHistory info) {
-				// 历史同步信息
-				BroadSender.sendBroadcastForHistorySport(info,getApplicationContext());
-				
-				if (info!=null) {
-					Log.e("", "--> 保存" +info);
-					info.save();
-				}
-			}
-			
-			@Override
-			public void onSyncHistorySleepStatus(String msg, int status) {
-				BroadSender.sendBroadcastForHistorySleepStatus(status, getApplicationContext());
-			}
-			
-			@Override
-			public void onSyncHistorySleep(String msg, SleepHistory info) {
-				BroadSender.sendBroadcastForHistorySleep(info, getApplicationContext());
-			}
-			
-			@Override
-			public void onSupportFeature(String msg, int[] result) {
-				
-			}
-			
-			@Override
-			public void onSportPlan(String msg, SportPlanSetting setting) {
-				BroadSender.sendBroadcastForSportPlan(setting, getApplicationContext());
-			}
-			
-			@Override
-			public void onRemindSetting(String msg, RemindSetting setting) {
-				BroadSender.sendBroadcastForRemind(setting, getApplicationContext());
-			}
-			
-			@Override
-			public void onHistorySyncStart(String msg,int type) {
-				if (type == 1) {
-					//运动开始同步
-					BroadSender.sendBroadcastForStartSyncSport(getApplicationContext());
-				}else{
-					//睡眠开始同步
-					BroadSender.sendBroadcastForStartSyncSleep(getApplicationContext());
-				}
-			}
-			
-			@Override
-			public void onHistorySyncEnd(String msg,int type) {
-				if (type == 1) {
-					//运动结束同步
-					BroadSender.sendBroadcastForEndSyncSport(getApplicationContext());
-				}else{
-					//睡眠结束同步
-					BroadSender.sendBroadcastForEndSyncSleep(getApplicationContext());
-				}
-			}
-			
-			@Override
-			public void onError(String msg) {
-				
-			}
-			
-			@Override
-			public void onDelete(String msg, int status) {
-				BroadSender.sendBroadcastForDelete(status, getApplicationContext());
-			}
-			
-			
-
-			@Override
-			public void onCurrentSportInfo(String msg, SportHistory info) {
-				BroadSender.sendBroadcastForCurrentSportInfo(info, getApplicationContext());
-			}
-
-			@Override
-			public void onCurrentSportInfoStatus(String msg, int status) {
-				BroadSender.sendBroadcastForCurrentSportInfoStatus(status, getApplicationContext());
-			}
-		});
-	}
+	
 
 	@Override
 	protected void onResume() {
@@ -295,7 +197,6 @@ public class MainActivity extends BaseActivity {
 					public void doRefresh() {
 						// 此页面中意为同步，智能手表与手机连接后点击，可将手表中设置和测量的最新数据同步到app中（725app规格书.pdf）
 						syncWatchSettingAndCurrentSport();
-
 //						testForLoadData();
 //						if (getXBlueService()!=null) {
 //							getXBlueService().write(JsdProtolWrite.getInstance().getByteForRequstWatchConfigration(5));

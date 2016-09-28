@@ -1,7 +1,6 @@
 package com.mycj.jusd.service;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,7 +29,6 @@ import com.laputa.blue.util.XLog;
 import com.mycj.jusd.bean.RemindSetting;
 import com.mycj.jusd.bean.Music;
 import com.mycj.jusd.bean.WatchSetting;
-import com.mycj.jusd.bean.news.CurrentSportLocation;
 import com.mycj.jusd.bean.news.SleepHistory;
 import com.mycj.jusd.bean.news.SportHistory;
 import com.mycj.jusd.bean.news.SportPlanSetting;
@@ -41,8 +39,8 @@ import com.mycj.jusd.util.MessageUtil;
 
 public class BlueService extends Service implements OnPreparedListener,
 		OnCompletionListener {
-
-	private Handler mHandler = new Handler() {
+	private boolean isDebug = true; 
+	private static Handler mHandler = new Handler() {
 	};
 	private Runnable taskIncoming;
 	private int phoneNo;
@@ -52,10 +50,6 @@ public class BlueService extends Service implements OnPreparedListener,
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		
-		
-		
-		
 		mHandler.postDelayed(new Runnable() {
 
 			@Override
@@ -84,29 +78,29 @@ public class BlueService extends Service implements OnPreparedListener,
 										.getAdapter().getBondedDevices();
 								//
 								if (bondedDevices.contains(remoteDevice)) {
-									XLog.e("_____已绑定 ：" + addressA);
+									i("_____已绑定 ：" + addressA);
 									if (!isConnect()) {
 										connect(addressA);
 										return;
 									}
 								} else {
-									XLog.e("_____未绑定 ：" + addressA);
+									i("_____未绑定 ：" + addressA);
 									// 当搜索列表中包含保存的addressA,并且未连接，就连接。
 									if (devices.contains(addressA)) {
 										if (!isConnect()) {
 											connect(addressA);
 										}
 									} else {
-										XLog.i("搜索列表无：" + addressA);
+										i("搜索列表无：" + addressA);
 									}
 								}
 							} catch (Exception e) {
 								e.printStackTrace();
-								XLog.e("重新连接失败！");
+								i("重新连接失败！");
 							}
 
 						} else {
-							XLog.i("蓝牙地址不匹配，没有addessA" + addressA);
+							i("蓝牙地址不匹配，没有addessA" + addressA);
 						}
 					}
 
@@ -138,27 +132,12 @@ public class BlueService extends Service implements OnPreparedListener,
 					}
 				});
 
-		/*
-		 * xplBlueManager = XBlueManager.instance(getApplicationContext());
-		 * xplBlueManager.setXBlueManagerListener(new XBlueManagerListener() {
-		 * @Override public void doDeviceFound(HashMap<String, BluetoothDevice>
-		 * scanDeviceMap) {
-		 * }
-		 * 
-		 * @Override public void doPlayMusic(int order) { playMusic(order); }
-		 * 
-		 * @Override public void doFindPhone(int order) { if (order==1) {
-		 * playResource(R.raw.crystal); }else{ stop(); } }
-		 * 
-		 * @Override public void doDisconnected(BluetoothDevice device) {
-		 * stop(); } });
-		 */
+	
 
 		/**********************************
 		 * 电话和短信 *
 		 **********************************/
 		// 可以先在同步里设置好。
-
 		taskIncoming = new Runnable() {
 			@Override
 			public void run() {
@@ -168,36 +147,26 @@ public class BlueService extends Service implements OnPreparedListener,
 						.getNewSmsCount(getApplicationContext());
 				int phoneCount = MessageUtil
 						.readMissCall(getApplicationContext());
-				Log.i("BaseApp", "____电话数量 ： " + phoneNo + "-->" + phoneCount);
-				Log.i("BaseApp", "____短信 ： " + smsMNo + "-->"
+				i("____电话数量 ： " + phoneNo + "-->" + phoneCount);
+				i("____短信 ： " + smsMNo + "-->"
 						+ (msmCount + mmsCount)
 						+ (smsMNo != (mmsCount + msmCount)));
-				// 数量只要有一个变化就发送
-				// boolean isCallRemind;
-				// isCallRemind = (boolean)
-				// SharedPreferenceUtil.get(getApplicationContext(),
-				// StaticValue.SHARE_REMIND_INCOMING, false);
+				
 				if (phoneNo != phoneCount || smsMNo != (mmsCount + msmCount)) {
-					Log.i("xpl",
-							"_______________________________________________________________________________________读取短信和电话数量 ： 有变化");
-					// if (mmsCount == 0 && msmCount == 0 && phoneCount == 0) {
-					// doWriteUnReadPhoneAndSmsToWatch(0, 0);
-					// return;
-					// } else {
+					e("_______________________________________________________________________________________读取短信和电话数量 ： 有变化");
 					write(ProtocolWriteManager.getInstance().writeForPhoneAndSmsCount(
 							phoneCount, mmsCount + msmCount));
-					// }
-					// 修改与10.28
 					phoneNo = phoneCount;
 					smsMNo = (mmsCount + msmCount);
 				} else {
-					Log.i("BaseApp", "__读取短信和电话数量 ： 无变化");
+					i( "__读取短信和电话数量 ： 无变化");
 				}
-				mHandler.postDelayed(taskIncoming, 8000);
+				mHandler.postDelayed(taskIncoming, TASK_DEFF_INCOMING);
 			}
 		};
-		mHandler.postDelayed(taskIncoming, 8 * 1000);
+		mHandler.postDelayed(taskIncoming, TASK_DEFF_INCOMING);
 	}
+	private final static long TASK_DEFF_INCOMING = 8 *1000;
 
 	public void startScan() {
 		simpleLaputaBlue.scanDevice(true);
@@ -213,18 +182,16 @@ public class BlueService extends Service implements OnPreparedListener,
 	}
 
 	public void write(byte[] data) {
-
 		simpleLaputaBlue.write(getBondedAddress(), data);
 	}
 
 	public void write(byte[][] datas) {
-
 		simpleLaputaBlue.write(getBondedAddress(), datas);
 	}
 
 	public boolean isConnect() {
 		return simpleLaputaBlue != null
-				&& simpleLaputaBlue.isConnected(BondedDeviceUtil.get(1, this));
+				&& simpleLaputaBlue.isConnected(getBondedAddress());
 	}
 
 	public void connect(String address) {
@@ -236,7 +203,7 @@ public class BlueService extends Service implements OnPreparedListener,
 	}
 
 	public boolean isAllConnect() {
-		return simpleLaputaBlue.isConnected(BondedDeviceUtil.get(1, this));
+		return simpleLaputaBlue.isConnected(getBondedAddress());
 	}
 
 	public void closeAll() {
@@ -368,13 +335,13 @@ public class BlueService extends Service implements OnPreparedListener,
 	 * 当发现service时，同步手机设置
 	 */
 	private void doUpdateSetting() {
-		XLog.e(BlueService.class, "doUpdateSetting() -- 开始");
+		e("doUpdateSetting() -- 开始");
 		
 		/*new MySyncTask()
 				.execute(new byte[][] { DataUtil.hexStringToByte("FB"), });*/
 		byte[] byteForTimeSync = ProtocolWriteManager.getInstance().getByteForTimeSync();
 		write(byteForTimeSync);
-		XLog.e(BlueService.class, "doUpdateSetting() -- 结束");
+		e( "doUpdateSetting() -- 结束");
 	}
 
 	
@@ -559,26 +526,26 @@ public class BlueService extends Service implements OnPreparedListener,
 	
 	
 	
-	private void sharedPreferenceRemindSetting(RemindSetting parseRemindSetting) {
+	/*private void sharedPreferenceRemindSetting(RemindSetting parseRemindSetting) {
 		
 	}
 	
-	/**
+	*//**
 	 * 保存运动计划设置 
 	 * @param parseSportPlanSetting
-	 */
+	 *//*
 	private void sharedPreferenceSportPlanSetting(
 			SportPlanSetting parseSportPlanSetting) {
 		
 	}
 	
-	/**
+	*//**
 	 * 保存手表设置
 	 * @param parseWatchSetting
-	 */
+	 *//*
 	private void sharedPreferenceWatchSetting(WatchSetting parseWatchSetting) {
 		
-	}
+	}*/
 	
 	/*private void saveHistorySport(StepHistorySport historySport) {
 		new SaveSportHistoryAsyncTask().execute(historySport);
@@ -620,5 +587,17 @@ public class BlueService extends Service implements OnPreparedListener,
 
 	public AbstractSimpleLaputaBlue getSimpleLaputaBlue() {
 		return this.simpleLaputaBlue;
+	}
+	
+	private void e(String msg){
+		if (isDebug) {
+			XLog.e("BlueService",msg);
+		}
+	}
+	
+	private void i(String msg){
+		if (isDebug) {
+			XLog.i("BlueService",msg);
+		}
 	}
 }

@@ -54,7 +54,7 @@ public class HistorySportActivity extends BaseActivity implements OnClickListene
 	private LitePalManager litePalManager;
 	private LinearLayout llSportSteps;
 	private boolean isLoading1 = false, isLoading2 = false;
-	private Handler mHandler = new Handler() {
+	private  Handler mHandler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case JunConstant.MSG_SHARE:
@@ -340,8 +340,11 @@ public class HistorySportActivity extends BaseActivity implements OnClickListene
 				@Override
 				public void run() {
 					isLoading2 = true;
-					List<SportHistory> result = litePalManager
+					List<SportHistory> all = litePalManager
 							.getSportHistoryListByMonth(date);
+					
+					List<SportHistory> result   = litePalManager.getSportHistoryListByIdx(all);
+					
 					Message msg = mHandler.obtainMessage();
 					msg.what = MSG_HISTROY_STEP;
 					msg.obj = result;
@@ -390,8 +393,9 @@ public class HistorySportActivity extends BaseActivity implements OnClickListene
 				@Override
 				public void run() {
 					// 需要分页 加载 ！！！！！！！！！
-					List<SportHistory> result = litePalManager
+					List<SportHistory> all = litePalManager
 							.getSportHistoryListByMonthForPath(date);
+					List<SportHistory> result   = litePalManager.getSportHistoryListByIdx(all);
 					if (result != null) {
 						Log.e("zeej",
 								"________________result 大小 " + result.size());
